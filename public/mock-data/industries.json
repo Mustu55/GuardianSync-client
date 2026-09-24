@@ -1,0 +1,28 @@
+{
+  "industries": [
+    {
+      "name": "power_plant",
+      "label": "Power Plant",
+      "description": "Coal/gas fired power generation facility with turbine, generator, transformer, and cooling systems",
+      "machines": ["boiler-01", "turbine-01", "generator-01", "transformer-01", "cooling-tower-01"]
+    },
+    {
+      "name": "water_treatment",
+      "label": "Water Treatment",
+      "description": "Municipal water purification and distribution facility",
+      "machines": ["intake-pump-01", "filter-unit-01", "chlorinator-01", "storage-tank-01", "dist-pump-01"]
+    },
+    {
+      "name": "manufacturing",
+      "label": "Manufacturing",
+      "description": "Automated production and assembly line with robotic systems",
+      "machines": ["conveyor-01", "robot-arm-01", "press-01", "qc-scanner-01", "packaging-01"]
+    },
+    {
+      "name": "chemical_facility",
+      "label": "Chemical Facility",
+      "description": "Chemical processing and refinery operations with reactor and distillation systems",
+      "machines": ["reactor-01", "distiller-01", "mixer-01", "storage-vessel-01", "scrubber-01"]
+    }
+  ]
+}

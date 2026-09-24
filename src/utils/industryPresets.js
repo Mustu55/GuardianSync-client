@@ -1,0 +1,75 @@
+export const INDUSTRY_TEMPLATES = {
+  power_plant: {
+    name: 'power_plant',
+    label: 'Power Plant',
+    description: 'Coal/gas fired power generation facility',
+    nodes: [
+      { id: 'boiler-01', type: 'machineNode', position: { x: 50, y: 200 }, data: { label: 'Boiler', machineId: 'boiler-01', status: 'online', icon: 'Flame' } },
+      { id: 'turbine-01', type: 'machineNode', position: { x: 300, y: 100 }, data: { label: 'Steam Turbine', machineId: 'turbine-01', status: 'online', icon: 'Fan' } },
+      { id: 'generator-01', type: 'machineNode', position: { x: 550, y: 100 }, data: { label: 'Generator', machineId: 'generator-01', status: 'online', icon: 'Zap' } },
+      { id: 'transformer-01', type: 'machineNode', position: { x: 550, y: 300 }, data: { label: 'Transformer', machineId: 'transformer-01', status: 'online', icon: 'CircuitBoard' } },
+      { id: 'cooling-tower-01', type: 'machineNode', position: { x: 300, y: 300 }, data: { label: 'Cooling Tower', machineId: 'cooling-tower-01', status: 'online', icon: 'Snowflake' } },
+    ],
+    edges: [
+      { id: 'e-boiler-turbine', source: 'boiler-01', target: 'turbine-01', animated: true, label: 'Steam' },
+      { id: 'e-turbine-gen', source: 'turbine-01', target: 'generator-01', animated: true, label: 'Shaft' },
+      { id: 'e-gen-trans', source: 'generator-01', target: 'transformer-01', animated: true, label: 'Power' },
+      { id: 'e-turbine-cool', source: 'turbine-01', target: 'cooling-tower-01', animated: true, label: 'Exhaust' },
+      { id: 'e-cool-boiler', source: 'cooling-tower-01', target: 'boiler-01', animated: true, label: 'Water Return' },
+    ],
+  },
+  water_treatment: {
+    name: 'water_treatment',
+    label: 'Water Treatment',
+    description: 'Municipal water purification and distribution facility',
+    nodes: [
+      { id: 'intake-pump-01', type: 'machineNode', position: { x: 50, y: 200 }, data: { label: 'Intake Pump', machineId: 'intake-pump-01', status: 'online', icon: 'Droplets' } },
+      { id: 'filter-unit-01', type: 'machineNode', position: { x: 250, y: 100 }, data: { label: 'Filter Unit', machineId: 'filter-unit-01', status: 'online', icon: 'Filter' } },
+      { id: 'chlorinator-01', type: 'machineNode', position: { x: 450, y: 100 }, data: { label: 'Chlorinator', machineId: 'chlorinator-01', status: 'online', icon: 'FlaskConical' } },
+      { id: 'storage-tank-01', type: 'machineNode', position: { x: 450, y: 300 }, data: { label: 'Storage Tank', machineId: 'storage-tank-01', status: 'online', icon: 'Container' } },
+      { id: 'dist-pump-01', type: 'machineNode', position: { x: 250, y: 300 }, data: { label: 'Distribution Pump', machineId: 'dist-pump-01', status: 'online', icon: 'ArrowRightLeft' } },
+    ],
+    edges: [
+      { id: 'e-intake-filter', source: 'intake-pump-01', target: 'filter-unit-01', animated: true, label: 'Raw Water' },
+      { id: 'e-filter-chlor', source: 'filter-unit-01', target: 'chlorinator-01', animated: true, label: 'Filtered' },
+      { id: 'e-chlor-store', source: 'chlorinator-01', target: 'storage-tank-01', animated: true, label: 'Treated' },
+      { id: 'e-store-dist', source: 'storage-tank-01', target: 'dist-pump-01', animated: true, label: 'Supply' },
+    ],
+  },
+  manufacturing: {
+    name: 'manufacturing',
+    label: 'Manufacturing',
+    description: 'Automated production and assembly line',
+    nodes: [
+      { id: 'conveyor-01', type: 'machineNode', position: { x: 50, y: 200 }, data: { label: 'Conveyor Belt', machineId: 'conveyor-01', status: 'online', icon: 'MoveRight' } },
+      { id: 'robot-arm-01', type: 'machineNode', position: { x: 250, y: 100 }, data: { label: 'Robot Arm', machineId: 'robot-arm-01', status: 'online', icon: 'Cog' } },
+      { id: 'press-01', type: 'machineNode', position: { x: 450, y: 100 }, data: { label: 'Hydraulic Press', machineId: 'press-01', status: 'online', icon: 'ArrowDownToLine' } },
+      { id: 'qc-scanner-01', type: 'machineNode', position: { x: 450, y: 300 }, data: { label: 'QC Scanner', machineId: 'qc-scanner-01', status: 'online', icon: 'ScanLine' } },
+      { id: 'packaging-01', type: 'machineNode', position: { x: 250, y: 300 }, data: { label: 'Packaging', machineId: 'packaging-01', status: 'online', icon: 'Package' } },
+    ],
+    edges: [
+      { id: 'e-conv-robot', source: 'conveyor-01', target: 'robot-arm-01', animated: true, label: 'Parts' },
+      { id: 'e-robot-press', source: 'robot-arm-01', target: 'press-01', animated: true, label: 'Assembly' },
+      { id: 'e-press-qc', source: 'press-01', target: 'qc-scanner-01', animated: true, label: 'Formed' },
+      { id: 'e-qc-pack', source: 'qc-scanner-01', target: 'packaging-01', animated: true, label: 'Inspected' },
+    ],
+  },
+  chemical_facility: {
+    name: 'chemical_facility',
+    label: 'Chemical Facility',
+    description: 'Chemical processing and refinery operations',
+    nodes: [
+      { id: 'reactor-01', type: 'machineNode', position: { x: 50, y: 200 }, data: { label: 'Reactor', machineId: 'reactor-01', status: 'online', icon: 'FlaskConical' } },
+      { id: 'distiller-01', type: 'machineNode', position: { x: 300, y: 100 }, data: { label: 'Distillation Column', machineId: 'distiller-01', status: 'online', icon: 'ArrowUpDown' } },
+      { id: 'mixer-01', type: 'machineNode', position: { x: 550, y: 100 }, data: { label: 'Mixer', machineId: 'mixer-01', status: 'online', icon: 'Container' } },
+      { id: 'storage-vessel-01', type: 'machineNode', position: { x: 550, y: 300 }, data: { label: 'Storage Vessel', machineId: 'storage-vessel-01', status: 'online', icon: 'Container' } },
+      { id: 'scrubber-01', type: 'machineNode', position: { x: 300, y: 300 }, data: { label: 'Gas Scrubber', machineId: 'scrubber-01', status: 'online', icon: 'Wind' } },
+    ],
+    edges: [
+      { id: 'e-react-dist', source: 'reactor-01', target: 'distiller-01', animated: true, label: 'Product' },
+      { id: 'e-dist-mix', source: 'distiller-01', target: 'mixer-01', animated: true, label: 'Purified' },
+      { id: 'e-mix-store', source: 'mixer-01', target: 'storage-vessel-01', animated: true, label: 'Blended' },
+      { id: 'e-react-scrub', source: 'reactor-01', target: 'scrubber-01', animated: true, label: 'Exhaust' },
+    ],
+  },
+};
