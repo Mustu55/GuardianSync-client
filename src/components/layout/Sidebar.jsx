@@ -38,7 +38,16 @@ export default function Sidebar() {
   };
 
   return (
-    <motion.aside
+    <>
+      {sidebarOpen && (
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => dispatch(toggleSidebar())}
+          className="fixed inset-0 z-30 bg-black/50 lg:hidden"
+        />
+      )}
+      <motion.aside
       initial={false}
       animate={{ width: sidebarOpen ? 240 : 72 }}
       transition={{ duration: 0.2 }}
@@ -117,14 +126,7 @@ export default function Sidebar() {
       >
         {sidebarOpen ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
       </button>
-      {sidebarOpen && (
-        <button
-          type="button"
-          aria-label="Close navigation"
-          onClick={() => dispatch(toggleSidebar())}
-          className="fixed inset-0 -z-10 bg-black/50 lg:hidden"
-        />
-      )}
-    </motion.aside>
+      </motion.aside>
+    </>
   );
 }

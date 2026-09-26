@@ -14,6 +14,7 @@ export default function ControlPanel() {
   const simulationMode = useSelector((s) => s.ui.simulationMode);
   const maintenanceActive = useSelector((s) => s.ui.maintenanceActive);
   const maintenanceWindow = useSelector((s) => s.ui.maintenanceWindow);
+  const role = useSelector((s) => s.ui.user?.role || 'operator');
   const [loading, setLoading] = useState(false);
   const [windowMinutes, setWindowMinutes] = useState(30);
 
@@ -117,7 +118,7 @@ export default function ControlPanel() {
           ))}
         </div>
 
-        <div className="bg-cyber-bg/50 rounded-lg p-2 space-y-2">
+        {role === 'admin' && <div className="bg-cyber-bg/50 rounded-lg p-2 space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs text-cyber-text-dim">Maintenance Lockdown</span>
             <span className={`text-xs ${maintenanceActive ? 'text-amber-400' : 'text-cyber-muted'}`}>
@@ -158,7 +159,7 @@ export default function ControlPanel() {
               Ends at {new Date(maintenanceWindow.endsAt).toLocaleTimeString()}
             </p>
           )}
-        </div>
+        </div>}
       </div>
     </Card>
   );

@@ -40,21 +40,21 @@ export default function Landing() {
       <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-cyber-accent/5 blur-[120px] pointer-events-none"></div>
 
       {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-8 py-6 w-full max-w-7xl mx-auto">
+      <header className="relative z-10 flex items-center justify-between gap-3 px-4 sm:px-8 py-4 sm:py-6 w-full max-w-7xl mx-auto">
         <div className="flex items-center gap-3">
           <Shield className="text-cyber-glow w-6 h-6" />
-          <span className="text-sm font-bold text-cyber-text tracking-[0.2em] uppercase">GuardianSync</span>
+          <span className="text-xs sm:text-sm font-bold text-cyber-text tracking-[0.15em] sm:tracking-[0.2em] uppercase">GuardianSync</span>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <button
             onClick={() => navigate('/login')}
-            className="text-sm text-cyber-text-dim hover:text-cyber-text transition-colors"
+            className="text-xs sm:text-sm text-cyber-text-dim hover:text-cyber-text transition-colors"
           >
             Sign In
           </button>
           <button
             onClick={() => navigate('/signup')}
-            className="enterprise-button-secondary text-xs px-4 py-1.5"
+            className="enterprise-button-secondary text-xs px-3 sm:px-4 py-1.5"
           >
             Request Access
           </button>
@@ -62,7 +62,7 @@ export default function Landing() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 pb-20 text-center">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 pb-10 sm:pb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -74,18 +74,18 @@ export default function Landing() {
             <span className="text-xs text-cyber-text-dim uppercase tracking-wider font-medium">System Secure & Operational</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-cyber-text-dim tracking-tight leading-[1.1] mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-cyber-text-dim tracking-tight leading-[1.1] mb-5 sm:mb-6">
             Industrial Security, <br />
             <span className="text-cyber-glow cyber-glow-text">Orchestrated.</span>
           </h1>
           
-          <p className="text-lg text-cyber-text-dim max-w-2xl mx-auto mb-12 font-light">
+          <p className="text-base sm:text-lg text-cyber-text-dim max-w-2xl mx-auto mb-8 sm:mb-12 font-light">
             Centralized approvals, real-time command execution, and deep forensic insight for critical infrastructure teams.
           </p>
         </motion.div>
 
         {/* Action Cards */}
-        <div className="grid md:grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6 w-full max-w-4xl mx-auto">
           {cards.map((card, index) => {
             const Icon = card.icon;
             return (
@@ -97,7 +97,7 @@ export default function Landing() {
                 className="group relative"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-cyber-glow/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-                <div className="relative h-full flex flex-col bg-cyber-card/40 backdrop-blur-xl border border-cyber-border rounded-2xl p-8 hover:border-cyber-glow/30 transition-all duration-300">
+                <div className="relative h-full flex flex-col bg-cyber-card/40 backdrop-blur-xl border border-cyber-border rounded-2xl p-5 sm:p-8 hover:border-cyber-glow/30 transition-all duration-300">
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 border ${card.bg} ${card.border}`}>
                     <Icon className={`w-6 h-6 ${card.color}`} />
                   </div>
@@ -130,7 +130,7 @@ export default function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-wrap justify-center gap-6 mt-16 text-cyber-text-dim"
+          className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 sm:mt-16 text-cyber-text-dim"
         >
           {features.map((feature, i) => (
             <div key={i} className="flex items-center gap-2 text-sm">
