@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialSidebarOpen = typeof window === 'undefined' || window.innerWidth >= 1024;
+
 const uiSlice = createSlice({
   name: 'ui',
   initialState: {
-    sidebarOpen: true,
+    sidebarOpen: initialSidebarOpen,
     activeView: 'dashboard',
     killSwitchActive: false,
     simulationActive: false,
@@ -33,6 +35,9 @@ const uiSlice = createSlice({
   reducers: {
     toggleSidebar: (state) => {
       state.sidebarOpen = !state.sidebarOpen;
+    },
+    setSidebarOpen: (state, action) => {
+      state.sidebarOpen = !!action.payload;
     },
     setActiveView: (state, action) => {
       try {
@@ -176,7 +181,7 @@ const uiSlice = createSlice({
 });
 
 export const {
-  toggleSidebar, setActiveView, setKillSwitch, setSimulationActive,
+  toggleSidebar, setSidebarOpen, setActiveView, setKillSwitch, setSimulationActive,
   setSimulationMode, setMaintenance, setConnected, setUser, setToken,
   updateThreatScore, setTheme, toggleTheme, setPendingRequestCount, logout,
 } = uiSlice.actions;
