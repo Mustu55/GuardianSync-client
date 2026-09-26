@@ -18,10 +18,10 @@ export default function IndustryMap({ fullscreen }) {
 
   return (
     <Card className={fullscreen ? 'h-full flex flex-col' : ''}>
-      <Card.Header>
-        <div className="flex items-center gap-2">
+      <Card.Header className="flex-wrap gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <Map size={16} className="text-cyber-glow" />
-          <Card.Title>Industry Map</Card.Title>
+          <Card.Title className="truncate">Industry Map</Card.Title>
           <Badge variant="glow">{template?.label || currentIndustry}</Badge>
           {mapSource !== 'preset' && (
             <Badge variant="secondary">{mapSource.toUpperCase()}</Badge>
@@ -31,12 +31,12 @@ export default function IndustryMap({ fullscreen }) {
           )}
         </div>
         {fullscreen && (
-          <div className="flex items-center gap-1.5">
+          <div className="flex w-full items-center gap-1.5 overflow-x-auto pb-1 xl:w-auto xl:pb-0">
             {Object.entries(INDUSTRY_TEMPLATES).map(([key, val]) => (
               <button
                 key={key}
                 onClick={() => dispatch(setCurrentIndustry(key))}
-                className={`px-2.5 py-1 rounded-md text-xs transition-all ${
+                className={`shrink-0 px-2.5 py-1 rounded-md text-xs transition-all ${
                   key === currentIndustry
                     ? 'bg-cyber-glow/20 text-cyber-accent border border-cyber-glow/30'
                     : 'bg-cyber-bg text-cyber-muted hover:text-cyber-text-dim border border-cyber-border'

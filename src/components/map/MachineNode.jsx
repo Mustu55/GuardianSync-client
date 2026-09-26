@@ -42,18 +42,18 @@ function MachineNode({ data }) {
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.05 }}
-      className={`relative bg-cyber-card border-2 ${config.border} rounded-xl px-4 py-3 min-w-[150px]
+      className={`relative bg-cyber-card border-2 ${config.border} rounded-xl px-2.5 py-2 sm:px-4 sm:py-3 min-w-[118px] sm:min-w-[150px] max-w-[170px]
         bg-gradient-to-b ${config.bg} ${config.glow} transition-all duration-300 cursor-pointer`}
     >
       <Handle type="target" position={Position.Left} className="!bg-cyber-glow !border-cyber-card !w-2 !h-2" />
       <Handle type="source" position={Position.Right} className="!bg-cyber-glow !border-cyber-card !w-2 !h-2" />
 
-      <div className="flex items-center gap-2.5">
-        <div className={`w-9 h-9 rounded-lg bg-cyber-bg/80 flex items-center justify-center border ${config.border}`}>
-          <Icon size={18} className={status === 'danger' ? 'text-red-400' : status === 'warning' ? 'text-amber-400' : 'text-cyber-accent'} />
+      <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className={`w-7 h-7 sm:w-9 sm:h-9 shrink-0 rounded-lg bg-cyber-bg/80 flex items-center justify-center border ${config.border}`}>
+          <Icon size={15} className={status === 'danger' ? 'text-red-400' : status === 'warning' ? 'text-amber-400' : 'text-cyber-accent'} />
         </div>
-        <div>
-          <p className="text-sm font-semibold text-cyber-text leading-tight">{data.label}</p>
+        <div className="min-w-0">
+          <p className="text-[11px] sm:text-sm font-semibold text-cyber-text leading-tight break-words">{data.label}</p>
           <div className="flex items-center gap-1.5 mt-0.5">
             <span className={`w-1.5 h-1.5 rounded-full ${config.dot} ${status === 'danger' ? 'animate-pulse' : ''}`} />
             <span className="text-[10px] text-cyber-muted uppercase tracking-wider">{status}</span>

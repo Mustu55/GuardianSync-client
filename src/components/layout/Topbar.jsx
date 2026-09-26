@@ -89,9 +89,9 @@ export default function Topbar() {
   }, [showAlerts]);
 
   return (
-    <header className="min-h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-10">
+    <header className="min-h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between z-10">
       {/* Left */}
-      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+      <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto sm:gap-4">
         <button
           type="button"
           onClick={() => dispatch(toggleSidebar())}
@@ -100,7 +100,7 @@ export default function Topbar() {
         >
           <Menu size={18} />
         </button>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-2">
           <Factory size={16} className="text-cyber-muted" />
           <select
             value={currentIndustry}
@@ -128,14 +128,14 @@ export default function Topbar() {
       </div>
 
       {/* Right */}
-      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
-        <div className="hidden sm:flex items-center gap-2">
+      <div className="flex w-full min-w-0 items-center justify-between gap-2 sm:w-auto sm:justify-end sm:gap-4">
+        <div className="flex items-center gap-2">
           {connected ? (
             <Signal size={14} className="text-cyber-success" />
           ) : (
             <SignalZero size={14} className="text-cyber-danger" />
           )}
-          <span className="text-xs text-cyber-text-dim">
+          <span className="hidden sm:inline text-xs text-cyber-text-dim">
             {connected ? 'Connected' : 'Disconnected'}
           </span>
         </div>
@@ -222,7 +222,7 @@ export default function Topbar() {
             </div>
             <button
               onClick={() => dispatch(logout())}
-              className="px-3 py-1.5 bg-cyber-card border border-cyber-border rounded-lg text-xs text-cyber-text-dim hover:border-cyber-glow/30 transition-colors"
+              className="shrink-0 px-2.5 sm:px-3 py-1.5 bg-cyber-card border border-cyber-border rounded-lg text-xs text-cyber-text-dim hover:border-cyber-glow/30 transition-colors"
             >
               Logout
             </button>
