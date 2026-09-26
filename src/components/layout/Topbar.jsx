@@ -89,7 +89,7 @@ export default function Topbar() {
   }, [showAlerts]);
 
   return (
-    <header className="min-h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between z-10">
+    <header className="relative min-h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-between z-30">
       {/* Left */}
       <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto sm:gap-4">
         <button
@@ -156,7 +156,7 @@ export default function Topbar() {
           {showAlerts && (
             <div
               ref={alertsRef}
-              className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] bg-cyber-card border border-cyber-border rounded-xl shadow-2xl z-40"
+              className="fixed left-3 right-3 top-[7.25rem] max-h-[min(28rem,calc(100vh-8rem))] bg-cyber-card border border-cyber-border rounded-xl shadow-2xl z-50 overflow-hidden sm:absolute sm:left-auto sm:right-0 sm:top-auto sm:mt-2 sm:w-[min(20rem,calc(100vw-1.5rem))] sm:max-h-none"
             >
               <div className="flex items-center justify-between px-3 py-2 border-b border-cyber-border">
                 <span className="text-xs text-cyber-text-dim uppercase tracking-widest">
