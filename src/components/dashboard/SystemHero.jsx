@@ -20,12 +20,12 @@ export default function SystemHero() {
     >
       <div className="cyber-card cyber-hero p-6 border border-cyber-glow/20">
         <div className="flex items-center justify-between">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs text-cyber-muted uppercase tracking-[0.3em]">GuardianSync</p>
             <h2 className="text-2xl lg:text-3xl font-semibold text-cyber-text mt-2">
               Live System Defense Grid
             </h2>
-            <p className="text-sm text-cyber-text-dim mt-2 max-w-xl">
+            <p className="max-w-xl break-words text-sm text-cyber-text-dim mt-2">
               Monitoring industrial command streams, anomaly scores, and critical nodes in real-time.
             </p>
           </div>

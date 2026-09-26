@@ -70,7 +70,7 @@ export default function ControlPanel() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           <Button
             variant="success"
             size="sm"
@@ -102,7 +102,7 @@ export default function ControlPanel() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
           {['normal', 'attack', 'maintenance'].map((mode) => (
             <button
               key={mode}

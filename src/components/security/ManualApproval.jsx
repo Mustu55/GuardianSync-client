@@ -136,9 +136,9 @@ export default function ManualApproval() {
                 exit={{ opacity: 0, x: 12, height: 0 }}
                 className="bg-cyber-bg/50 border border-amber-500/20 rounded-xl p-4 hover:border-amber-500/40 transition-colors"
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
                       <Clock size={14} className="text-amber-400" />
                       <span className="text-sm font-mono font-semibold text-cyber-text">{cmd.command}</span>
                       <Badge status="pending">PENDING</Badge>
@@ -152,7 +152,7 @@ export default function ManualApproval() {
 
                     {cmd.aiResult && (
                       <div className="bg-cyber-card/50 rounded-lg p-2.5 text-xs">
-                        <div className="flex items-center gap-3 mb-1">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-1">
                           <span className="text-cyber-muted">AI Score:</span>
                           <span className={`font-mono font-semibold ${
                             cmd.aiResult.anomalyScore > 0.6 ? 'text-red-400' : 'text-amber-400'
@@ -169,11 +169,11 @@ export default function ManualApproval() {
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-2">
-                    <Button variant="success" size="sm" icon={CheckCircle} onClick={() => handleApprove(cmd._id)}>
+                  <div className="flex w-full gap-2 sm:w-auto sm:shrink-0 sm:flex-col">
+                    <Button className="flex-1 sm:flex-none" variant="success" size="sm" icon={CheckCircle} onClick={() => handleApprove(cmd._id)}>
                       Approve
                     </Button>
-                    <Button variant="danger" size="sm" icon={XCircle} onClick={() => handleReject(cmd._id)}>
+                    <Button className="flex-1 sm:flex-none" variant="danger" size="sm" icon={XCircle} onClick={() => handleReject(cmd._id)}>
                       Reject
                     </Button>
                   </div>

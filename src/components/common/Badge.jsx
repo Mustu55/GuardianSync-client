@@ -6,7 +6,7 @@ export default function Badge({ children, variant = 'default', severity, status,
     : status ? COMMAND_STATUS_COLORS[status]
     : null;
 
-  const baseClasses = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold';
+  const baseClasses = 'inline-flex max-w-full items-center gap-1 px-2 py-0.5 rounded-full text-xs font-semibold';
 
   const variantClasses = {
     default: 'bg-cyber-border text-cyber-text-dim',

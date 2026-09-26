@@ -92,19 +92,19 @@ export default function PacketFeed({ showAlerts, forensic, expanded }) {
 
   return (
     <Card className={expanded ? 'h-full' : 'max-h-[420px]'}>
-      <Card.Header>
-        <div className="flex items-center gap-2">
+      <Card.Header className="items-start">
+        <div className="flex min-w-0 items-center gap-2">
           <Radio size={16} className="text-cyber-glow animate-pulse" />
           <Card.Title>
             {showAlerts ? 'Alert Feed' : forensic ? 'Forensic Vault' : 'Live Packet Feed'}
           </Card.Title>
           <span className="text-xs text-cyber-muted">({filtered.length})</span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="ml-auto flex w-full flex-wrap items-center gap-2 sm:w-auto">
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="bg-cyber-bg border border-cyber-border rounded px-2 py-1 text-xs text-cyber-text-dim focus:outline-none"
+            className="min-w-0 flex-1 bg-cyber-bg border border-cyber-border rounded px-2 py-1 text-xs text-cyber-text-dim focus:outline-none sm:flex-none"
           >
             <option value="all">All</option>
             <option value="blocked">Blocked / Threats</option>
@@ -133,7 +133,7 @@ export default function PacketFeed({ showAlerts, forensic, expanded }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="flex items-start gap-3 px-3 py-2 rounded-lg bg-cyber-bg/50 hover:bg-cyber-bg border border-transparent hover:border-cyber-border transition-all group"
+              className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-1 px-3 py-2 rounded-lg bg-cyber-bg/50 hover:bg-cyber-bg border border-transparent hover:border-cyber-border transition-all group sm:flex sm:items-start"
               onClick={() => {
                 if (!showAlerts) return;
                 setExpandedId((prev) => (prev === item.id ? null : item.id));
@@ -148,7 +148,7 @@ export default function PacketFeed({ showAlerts, forensic, expanded }) {
               }`} />
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
+                <div className="flex min-w-0 flex-wrap items-center gap-2">
                   <span className="text-xs font-mono font-semibold text-cyber-text truncate">{item.title}</span>
                   {item.status && <Badge status={item.status}>{item.status}</Badge>}
                   {item.severity && <Badge severity={item.severity}>{item.severity}</Badge>}
@@ -170,14 +170,14 @@ export default function PacketFeed({ showAlerts, forensic, expanded }) {
               </div>
 
               {item.score != null && (
-                <span className={`text-xs font-mono font-semibold flex-shrink-0 ${
+                <span className={`col-start-2 text-xs font-mono font-semibold sm:ml-auto sm:col-auto flex-shrink-0 ${
                   item.score > 0.6 ? 'text-red-400' : item.score > 0.3 ? 'text-amber-400' : 'text-emerald-400'
                 }`}>
                   {(item.score * 100).toFixed(0)}%
                 </span>
               )}
 
-              <span className="text-[10px] text-cyber-muted font-mono flex-shrink-0">
+              <span className="col-start-2 text-[10px] text-cyber-muted font-mono flex-shrink-0 sm:col-auto">
                 {item.time ? formatTimestamp(item.time) : ''}
               </span>
             </motion.div>

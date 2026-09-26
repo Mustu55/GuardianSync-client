@@ -22,7 +22,7 @@ export default function Card({ children, className, glow, danger, ...props }) {
 
 Card.Header = function CardHeader({ children, className }) {
   return (
-    <div className={cn('flex items-center justify-between mb-3', className)}>
+    <div className={cn('flex flex-wrap items-center gap-2 mb-3', className)}>
       {children}
     </div>
   );

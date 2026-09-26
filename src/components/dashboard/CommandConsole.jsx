@@ -137,25 +137,25 @@ export default function CommandConsole({ expanded }) {
       </div>
 
       {/* Input */}
-      <div className="flex gap-2 mb-3">
+      <div className="flex flex-col gap-2 mb-3 sm:flex-row">
         <select
           value={selectedMachine}
           onChange={(e) => setSelectedMachine(e.target.value)}
-          className="bg-cyber-bg border border-cyber-border rounded-lg px-2 py-2 text-xs text-cyber-text-dim focus:outline-none focus:border-cyber-glow w-36"
+          className="w-full bg-cyber-bg border border-cyber-border rounded-lg px-2 py-2 text-xs text-cyber-text-dim focus:outline-none focus:border-cyber-glow sm:w-36 sm:shrink-0"
         >
           <option value="">Auto (target)</option>
           {machines.map((m) => (
             <option key={m.id} value={m.id}>{m.data?.label || m.id}</option>
           ))}
         </select>
-        <div className="flex-1 flex">
+        <div className="flex min-w-0 flex-1">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value.toUpperCase())}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Type SCADA command..."
-            className="flex-1 bg-cyber-bg border border-cyber-border border-r-0 rounded-l-lg px-3 py-2 text-sm font-mono text-cyber-accent focus:outline-none focus:border-cyber-glow placeholder:text-cyber-muted"
+            className="min-w-0 flex-1 bg-cyber-bg border border-cyber-border border-r-0 rounded-l-lg px-3 py-2 text-sm font-mono text-cyber-accent focus:outline-none focus:border-cyber-glow placeholder:text-cyber-muted"
           />
           <button
             onClick={handleSend}
