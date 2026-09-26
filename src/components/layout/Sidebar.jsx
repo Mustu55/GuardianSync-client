@@ -42,7 +42,7 @@ export default function Sidebar() {
       initial={false}
       animate={{ width: sidebarOpen ? 240 : 72 }}
       transition={{ duration: 0.2 }}
-      className="h-screen bg-cyber-surface border-r border-cyber-border flex flex-col z-20"
+      className={`fixed inset-y-0 left-0 h-screen w-[240px] bg-cyber-surface border-r border-cyber-border flex flex-col z-40 lg:relative lg:z-20 ${sidebarOpen ? 'translate-x-0' : 'max-lg:-translate-x-full'} transition-transform duration-200`}
     >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 h-16 border-b border-cyber-border">
@@ -117,6 +117,14 @@ export default function Sidebar() {
       >
         {sidebarOpen ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
       </button>
+      {sidebarOpen && (
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => dispatch(toggleSidebar())}
+          className="fixed inset-0 -z-10 bg-black/50 lg:hidden"
+        />
+      )}
     </motion.aside>
   );
 }

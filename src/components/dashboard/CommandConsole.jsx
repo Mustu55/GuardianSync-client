@@ -90,7 +90,7 @@ export default function CommandConsole({ expanded }) {
   };
 
   return (
-    <Card className={expanded ? 'h-full flex flex-col' : ''}>
+    <Card className={expanded ? 'h-auto min-h-[520px] lg:h-full flex flex-col' : ''}>
       <Card.Header>
         <div className="flex items-center gap-2">
           <Terminal size={16} className="text-cyber-glow" />

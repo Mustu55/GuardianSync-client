@@ -1,4 +1,5 @@
-const API_BASE = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+const configuredApiUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+const API_BASE = configuredApiUrl.endsWith('/api') ? configuredApiUrl : `${configuredApiUrl}/api`;
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // ms
 

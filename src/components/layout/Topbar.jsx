@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentIndustry } from '../../store/mapSlice';
 import { INDUSTRY_TEMPLATES } from '../../utils/industryPresets';
 import Badge from '../common/Badge';
-import { Signal, SignalZero, Bell, User, Factory, Palette, ChevronDown } from 'lucide-react';
+import { Signal, SignalZero, Bell, User, Factory, Palette, ChevronDown, Menu } from 'lucide-react';
 import { logout } from '../../store/uiSlice';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { setActiveView } from '../../store/uiSlice';
 import { acknowledgeAlert, setAlerts } from '../../store/alertSlice';
 import { api } from '../../services/api';
-import { setTheme } from '../../store/uiSlice';
+import { setTheme, toggleSidebar } from '../../store/uiSlice';
 import { gsap } from 'gsap';
 
 export default function Topbar() {
@@ -23,6 +23,7 @@ export default function Topbar() {
   const unackCount = alerts.filter((alert) => !alert.acknowledged).length;
   const user = useSelector((s) => s.ui.user);
   const theme = useSelector((s) => s.ui.theme);
+  const sidebarOpen = useSelector((s) => s.ui.sidebarOpen);
   const [showAlerts, setShowAlerts] = useState(false);
   const alertsRef = useRef(null);
 
@@ -88,15 +89,23 @@ export default function Topbar() {
   }, [showAlerts]);
 
   return (
-    <header className="h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-4 flex items-center justify-between z-10">
+    <header className="min-h-14 bg-cyber-surface/80 backdrop-blur-md border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-10">
       {/* Left */}
-      <div className="flex items-center gap-4">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+        <button
+          type="button"
+          onClick={() => dispatch(toggleSidebar())}
+          aria-label={sidebarOpen ? 'Close navigation' : 'Open navigation'}
+          className="p-2 rounded-lg text-cyber-text-dim hover:bg-cyber-card lg:hidden"
+        >
+          <Menu size={18} />
+        </button>
         <div className="flex items-center gap-2">
           <Factory size={16} className="text-cyber-muted" />
           <select
             value={currentIndustry}
             onChange={(e) => dispatch(setCurrentIndustry(e.target.value))}
-            className="bg-cyber-card border border-cyber-border rounded-md px-2 py-1 text-sm text-cyber-text focus:outline-none focus:border-cyber-glow"
+            className="max-w-[42vw] bg-cyber-card border border-cyber-border rounded-md px-2 py-1 text-xs sm:text-sm text-cyber-text focus:outline-none focus:border-cyber-glow"
           >
             {industries.length > 0
               ? industries.map((item) => (
@@ -119,8 +128,8 @@ export default function Topbar() {
       </div>
 
       {/* Right */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2">
+      <div className="flex min-w-0 items-center gap-2 sm:gap-4">
+        <div className="hidden sm:flex items-center gap-2">
           {connected ? (
             <Signal size={14} className="text-cyber-success" />
           ) : (
@@ -147,7 +156,7 @@ export default function Topbar() {
           {showAlerts && (
             <div
               ref={alertsRef}
-              className="absolute right-0 mt-2 w-80 bg-cyber-card border border-cyber-border rounded-xl shadow-2xl z-40"
+              className="absolute right-0 mt-2 w-[min(20rem,calc(100vw-1.5rem))] bg-cyber-card border border-cyber-border rounded-xl shadow-2xl z-40"
             >
               <div className="flex items-center justify-between px-3 py-2 border-b border-cyber-border">
                 <span className="text-xs text-cyber-text-dim uppercase tracking-widest">
@@ -203,13 +212,13 @@ export default function Topbar() {
         </div>
 
         {user && (
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-2 px-2 py-1 bg-cyber-card rounded-lg">
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
                 <User size={12} className="text-white" />
               </div>
-              <span className="text-xs text-cyber-text-dim">{user.username}</span>
-              <span className="text-[10px] text-cyber-muted uppercase">{user.role}</span>
+              <span className="hidden sm:inline max-w-24 truncate text-xs text-cyber-text-dim">{user.username}</span>
+              <span className="hidden md:inline text-[10px] text-cyber-muted uppercase">{user.role}</span>
             </div>
             <button
               onClick={() => dispatch(logout())}

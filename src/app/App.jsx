@@ -53,11 +53,11 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen overflow-hidden bg-cyber-bg cyber-grid-bg">
+    <div className="flex h-screen min-w-0 overflow-hidden bg-cyber-bg cyber-grid-bg">
       <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 min-w-0 flex flex-col overflow-hidden">
         <Topbar />
-        <main className="flex-1 overflow-auto p-4 lg:p-6">
+        <main className="flex-1 min-w-0 overflow-auto p-3 sm:p-4 lg:p-6">
           <ViewTransition viewKey={activeView}>
             {renderView()}
           </ViewTransition>
@@ -113,15 +113,12 @@ function DashboardView({ role }) {
 }
 
 function MapView() {
-  const role = useSelector((s) => s.ui.user?.role || 'operator');
   return (
-    <div className="h-full min-h-[600px] grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-6">
+    <div className="h-auto xl:h-full min-h-0 xl:min-h-[600px] grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_320px] gap-4 lg:gap-6">
       <IndustryMap fullscreen />
-      {role === 'admin' && (
-        <div className="space-y-6">
-          <BlueprintUploadPanel />
-        </div>
-      )}
+      <div className="space-y-6 min-w-0">
+        <BlueprintUploadPanel />
+      </div>
     </div>
   );
 }
@@ -129,7 +126,7 @@ function MapView() {
 function CommandView() {
   const role = useSelector((s) => s.ui.user?.role || 'operator');
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 h-auto lg:h-full">
       <CommandConsole expanded />
       <div className="space-y-6">
         {role === 'admin' && <ControlPanel />}

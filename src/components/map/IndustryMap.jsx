@@ -49,7 +49,7 @@ export default function IndustryMap({ fullscreen }) {
         )}
       </Card.Header>
 
-      <div className={`${fullscreen ? 'flex-1 min-h-0' : 'h-[350px]'} rounded-lg overflow-hidden border border-cyber-border bg-cyber-bg relative`}>
+      <div className={`${fullscreen ? 'h-[55vh] min-h-[420px] xl:h-auto xl:flex-1 xl:min-h-0' : 'h-[350px]'} rounded-lg overflow-hidden border border-cyber-border bg-cyber-bg relative`}>
         {svgMarkup && (
           <div
             className="absolute inset-0 opacity-70 pointer-events-none flex items-center justify-center svg-blueprint"

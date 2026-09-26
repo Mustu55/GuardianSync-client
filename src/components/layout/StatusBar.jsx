@@ -12,21 +12,21 @@ export default function StatusBar() {
   const currentIndustry = useSelector((s) => s.map.currentIndustry);
 
   return (
-    <footer className="h-7 bg-cyber-surface/60 border-t border-cyber-border px-4 flex items-center justify-between text-[11px] text-cyber-muted font-mono">
+    <footer className="min-h-7 bg-cyber-surface/60 border-t border-cyber-border px-3 sm:px-4 py-1 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 text-[10px] sm:text-[11px] text-cyber-muted font-mono">
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1.5">
           <span className={`w-1.5 h-1.5 rounded-full ${connected ? 'bg-cyber-success' : 'bg-cyber-danger'}`} />
           {connected ? 'ONLINE' : 'OFFLINE'}
         </span>
         <span>INDUSTRY: {currentIndustry.toUpperCase().replace('_', ' ')}</span>
-        <span>MODE: {simulationMode.toUpperCase()}</span>
-        <span>PACKETS: {packetCount}</span>
+        <span className="hidden sm:inline">MODE: {simulationMode.toUpperCase()}</span>
+        <span className="hidden md:inline">PACKETS: {packetCount}</span>
       </div>
       <div className="flex items-center gap-4">
         <span>THREAT: {(threatScore * 100).toFixed(1)}%</span>
         {maintenanceActive && <span className="text-amber-400">MAINTENANCE</span>}
         {killSwitch && <span className="text-red-400 animate-pulse">⚠ KILL SWITCH</span>}
-        <span>{formatTimestamp(Date.now())}</span>
+        <span className="hidden sm:inline">{formatTimestamp(Date.now())}</span>
       </div>
     </footer>
   );
